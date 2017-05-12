@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <!--样式-->
+    <?php include($_SERVER['DOCUMENT_ROOT'] .' /html/common/style.html')?>
+</head>
+<body>
+    <!-- 登录 -->
+    <div class="login">
+        <div class="login-wrap">
+            <div class="avatar">
+                <img src="./uploads/monkey.png" class="img-circle" alt="">
+            </div>
+            <!--在表单form中 添加id action(提交到的路径地址) method(提交方式) 后面的login.js中可以直接调用jquery-form中的ajaxForm的方法-->
+            <form id="login-form" action="/v6/login" method="post" class="col-xs-offset-1 col-xs-10">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <!--添加name="tc_name" 提交到后台对方才知道此条数据是什么意思-->
+                    <input type="text" name="tc_name" class="form-control" placeholder="用户名" value="前端学院">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                     <!--添加name="tc_pass" 提交到后台对方才知道此条数据是什么意思-->
+                    <input type="password" name="tc_pass"  class="form-control" placeholder="密码" value="123456">
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
+            </form>
+        </div>
+    </div>
+    
+    <!--requierjs 配置入口函数   上线项目用绝对路径--> 
+    <script src="/lib/requirejs/require-2.3.3.js" data-main='/js/common/main'></script>
+</body>
+</html>
