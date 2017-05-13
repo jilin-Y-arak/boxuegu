@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
-    <!--样式-->
-    <?php include($_SERVER['DOCUMENT_ROOT'] .' /html/common/style.html')?>
+    <!-- 样式 -->
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/style.html')?>
 </head>
 <body>
     
     <!-- 侧边栏 -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] .' /html/common/aside.html')?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/aside.html')?>
     <!-- 主体 -->
     <div class="main">
         <div class="container-fluid">
             <!-- 头部 -->
-            <?php include($_SERVER['DOCUMENT_ROOT'] .' /html/common/header.html')?>
+        	<?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/header.html')?>
             <!-- 讲师列表 -->
             <div class="body teacher-list">
                 <!-- 面包屑 -->
@@ -23,7 +23,7 @@
                     <li class="active">讲师列表</li>
                 </ol>
                 <div class="page-title">
-                    <a href="./teacher_add.html" class="btn btn-success btn-sm pull-right">添加讲师</a>
+                    <a href="/html/teacher/edit.html" class="btn btn-success btn-sm pull-right">添加讲师</a>
                 </div>
                 <div class="panel panel-default">
                     <table class="table table-striped table-bordered table-hover">
@@ -48,7 +48,7 @@
                                 <td>15901256171</td>
                                 <td>
                                     <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
-                                    <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
+                                    <a href="/html/teacher/edit.html" class="btn btn-info btn-xs">编 辑</a>
                                     <a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
                                 </td>
                             </tr>
@@ -75,7 +75,7 @@
                                 <th>职位:</th><td colspan="3">讲师</td>
                                 <td rowspan="4" width="128">
                                     <div class="avatar">
-                                        <img src="./images/default.png" alt="">
+                                        <img src="/img/default.png" alt="">
                                     </div>
                                 </td>
                             </tr>
@@ -109,9 +109,9 @@
             </div>
         </div>
     </div>
-
-    <script src="../../lib/jquery/jquery.min.js"></script>
-    <script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../js/common.js"></script>
+    <!--loading 页面进入的缓冲 状态 齿轮的添加-->
+    <?php include($_SERVER['DOCUMENT_ROOT'] .' /html/common/loading.html')?>
+        <!--requierjs 配置入口函数   上线项目用绝对路径--> 
+	<script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
 </body>
 </html>

@@ -34,8 +34,11 @@ require.config({
         // 依赖jQuery 
         jquery : 'lib/jquery/jquery.min' ,
         bootstrap : 'lib/bootstrap/js/bootstrap.min',
-        jquery_form:'lib/jquery-form/jquery.form'  
+        jquery_form:'lib/jquery-form/jquery.form' ,
+        jquery_cookie:'lib/jquery-cookie/jquery.cookie' ,
+        
         // 独立的
+        nprogress:'lib/nprogress/nprogress' ,
           
     },
     // 配置普通模块的依赖 或 输出
