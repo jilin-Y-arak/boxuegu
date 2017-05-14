@@ -39,6 +39,7 @@ require.config({
         
         // 独立的
         nprogress:'lib/nprogress/nprogress' ,
+        template:'lib/artTemplate/template' ,
           
     },
     // 配置普通模块的依赖 或 输出
@@ -55,6 +56,7 @@ require.config({
  */
 var obj = {
     '/' : 'index' ,
+    '/index.html' : 'index' ,
     '/html/home/login.html' : 'login' ,
     '/html/home/repass.html': 'repass',
 	'/html/home/settings.html': 'settings',
@@ -74,3 +76,8 @@ var obj = {
  var moduleName = obj[location.pathname] ;
 //   加载对应 的模块  ( 加载 路径的 值 即别名  )
  require([moduleName]) ;
+
+//  记载进度条 开始
+require(function(nprogress){
+    nprogress.start();
+});

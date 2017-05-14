@@ -20,11 +20,11 @@ define([
     $('.aside h4').text(userInfo.tc_name) ;
 
     // 左侧下拉列表
-    $('.slide-down').on('mousedown' , function(){
+    $('.slide-down').on('click' , function(){
         // 下拉列表 slideToggle下拉上拉自动切换 
         $(this).next().slideToggle();
     })
-
+   
     /**
 	 * 左侧导航焦点定位：
 	 * 1、先获取页面的pathname
@@ -37,7 +37,7 @@ define([
      var pathname = location.pathname ;
     //  这两个不是对应一样的 所以 配置处理
      var pathToHref = {
-        //  pathName    :   href    
+        //  当页面的路径pathName 为   :   a链接的 href 转到     
          '/html/user/profile.html' : '/html/user/list.html',
          '/html/teacher/edit.html' : '/html/teacher/list.html',
 
@@ -48,9 +48,9 @@ define([
      var href = pathToHref[pathname]? pathToHref[pathname] : pathname;
     //  对所有的 清除active类名 不被选中  当他的href为变量href对应的值时  添加类名 即 被选中
      $('.aside a').removeClass('active')
-        .filter('[href="'+href+'"]').addClass('active')
+        .filter('[href="'+href+'"]').addClass('active').parent().parent().css('display' , 'block')
 
-
+    
 
 });
 

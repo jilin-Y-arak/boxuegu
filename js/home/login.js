@@ -6,17 +6,13 @@
  * nprogress ADM模块  
  * util ADM 模块 
  */
-define([ 'jquery','bootstrap', 'jquery_form','jquery_cookie' ,'nprogress' ,'util'], function($, ud ,ud , ud , nprogress, util) { 
+define([ 'jquery', 'jquery_form','jquery_cookie' ,'nprogress' ,'util'], function($, ud , ud , nprogress, util) { 
     // 形参用来接收模块的输出 可任意写名 但是 需按顺序
 
-    // 网站进度条 即网页最上面的进度条
-    nprogress.start() ;
-    $(function(){
-        nprogress.done() ;
-    });
-
-// 配合ajax请求的 loading 进入页面的缓冲画面 （齿轮）
-    util.loading(); 
+    // 登录 状态 的检查  登录成功 直接跳转 到首页
+    if($.cookie('PHPSESSID')){
+        location.href = '/'
+    }
 
     // 监听form表单提交时间 转为ajax请求
     // ajaxFor 是jquery-form的方法 可以直接使用 
@@ -34,10 +30,11 @@ define([ 'jquery','bootstrap', 'jquery_form','jquery_cookie' ,'nprogress' ,'util
          }
     });   
     
-    // 登录 状态 的检查  登录成功 直接跳转 到首页
-    if($.cookie('PHPSESSID')){
-        location.href = '/'
-    }
+
+        // 销毁进度条
+    $(function () {
+        nprogress.done();
+    })
 
 });
 
