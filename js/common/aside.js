@@ -8,12 +8,14 @@ define([
      * 数据渲染到 导航栏左侧 上部
      */
     
-    var userInfo ={};
-    try {
-        userInfo = JSON.parse($.cookie('userInfo')) ;
-    }catch(e){
-        console.log("userInfo解析错误") ;
-    }
+    // var userInfo ={};
+    // try {
+    //     userInfo = JSON.parse($.cookie('userInfo')) ;
+    // }catch(e){
+    //     console.log("userInfo解析错误") ;
+    // }
+
+    var userInfo = JSON.parse($.cookie('userInfo') || '{}');
     // 在保证存在 头像 的请求 才设置用户头像
     userInfo.tc_avatar && $('.aside .avatar img').attr('src' , userInfo.tc_avatar) ;
     // 设置用户姓名

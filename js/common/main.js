@@ -12,6 +12,7 @@ require.config({
         settings : 'js/home/settings' ,
         // teacher 
         tcEdit : 'js/teacher/edit' ,
+        tcAdd : 'js/teacher/add' ,
         tcList : 'js/teacher/list' ,
         // user
         usProfile : 'js/user/profile' ,
@@ -36,6 +37,10 @@ require.config({
         bootstrap : 'lib/bootstrap/js/bootstrap.min',
         jquery_form:'lib/jquery-form/jquery.form' ,
         jquery_cookie:'lib/jquery-cookie/jquery.cookie' ,
+        jquery_region: 'lib/jquery-region/jquery.region',
+        datepicker: 'lib/bootstrap-datepicker/js/bootstrap-datepicker.min',
+        datepicker_zh_CN: 'lib/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+         uploadify: 'lib/uploadify/jquery.uploadify.min',
         
         // 独立的
         nprogress:'lib/nprogress/nprogress' ,
@@ -48,24 +53,37 @@ require.config({
         bootstrap : {
             // 且依赖jquery
             deps : ['jquery']
-        }
+        },
+        datepicker_zh_CN:{
+             deps : ['jquery' ,'datepicker']
+        },
+        uploadify : {
+            // 依赖jquery
+            deps : ['jquery']
+        },
     }
 });
+// 齿轮开始
+require(['nprogress'], function(nprogress) {
+	nprogress.start();
+});
+
 /**
  * 如果用户打开的是某个页面，那么应该加载对应的js模块 
  */
 var obj = {
-    '/' : 'index' ,
-    '/index.html' : 'index' ,
-    '/html/home/login.html' : 'login' ,
-    '/html/home/repass.html': 'repass',
+	'/': 'index',
+	'/index.html': 'index',
+	'/html/home/login.html': 'login',
+	'/html/home/repass.html': 'repass',
 	'/html/home/settings.html': 'settings',
+	'/html/teacher/add.html': 'tcAdd',
 	'/html/teacher/edit.html': 'tcEdit',
 	'/html/teacher/list.html': 'tcList',
 	'/html/user/profile.html': 'usProfile',
 	'/html/user/list.html': 'usList',
 	'/html/course/add.html': 'csAdd',
-	'/html/course/list.html': 'usList',
+	'/html/course/list.html': 'csList',
 	'/html/course/category_add.html': 'cgAdd',
 	'/html/course/category_list.html': 'cgList',
 	'/html/course/course_add_step1.html': 'csAdd1',
@@ -78,6 +96,4 @@ var obj = {
  require([moduleName]) ;
 
 //  记载进度条 开始
-require(function(nprogress){
-    nprogress.start();
-});
+

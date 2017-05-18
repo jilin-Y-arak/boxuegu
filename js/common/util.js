@@ -42,8 +42,37 @@ define([
                     $('.overlay').hide() ;
                 })
             },
+            /**
+             * 获取页面search 无参数把search转化为对象返回 
+             * 有参数 返回指定key的search值
+             */
+            getSearch : function(searchKey){
+                // 定义 空对象 存储所有的search
+                var searchObj = {} ,        
+                    temp , // 临时变量 
+                    // 使用location.search 获取查询字符串  -？key1=value1&key2=value2..
+                    // slice(1) 截取从1开始到最后 返回新的字符串  - key1=value1&key2=value2..
+                            // 相当于 去掉了 索引为0的？
+                    // split('&') 以&作为分割 把一个长的字符串变成字符串数组（数组中有多个字符串）
+                            //  ['key1=value1','key2=value2',..]
+                    searchArr = location.search.slice(1).split('&' );
+                    // 遍历 字符串 数组
+                    for (var i=0 ;i<searchArr.length ; i++){
+                        // 将每一个字符串数组 再次以=分割 成字符串 数组  
+                        //  ['key1','value1'] 
+                        temp = searchArr[i].split('=') ;
+                        // temp[0]二次中的字符串数组中的0字符串作为对象的key.1字符串作为key对应的值 
+                        searchObj[temp[0]] = temp[1] ;
+                        // { 'key1' : 'value1' ,'key2' : 'value2 ',..}
+                    }
+                    // 没有传入参数 返回整个对象 传入参数 返回指定对象的中指定的值
+                    return searchKey == null ? searchObj : searchObj[searchKey] ;
+            },
+
+            
     }
-    // 返回 一个函数 
+
+// 返回 一个函数 
     // 函数 传入 每个方法的名称 键方法名 ：值-方法需要的传入的参数
     //  格式为{'checkLoginStatus':[],loading' : [] }
     return function(methods){ 
@@ -59,13 +88,8 @@ define([
             returns[key] = util[key].apply(util , methods[key]);
         }
         // 返回 所有方法的 返回值
-        return returns ;
-
+        return returns
     }
-
-
-
-
 
 
 

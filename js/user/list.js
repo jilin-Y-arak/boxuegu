@@ -15,8 +15,7 @@ define([
     });
 
 
-    // 销毁进度条
-    $(function () {
-        nprogress.done();
-    })
+// 销毁进度条
+    nprogress.done();
+
 });
